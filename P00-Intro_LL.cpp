@@ -26,7 +26,7 @@ struct Node {
 Node* cnvtArrToLL(vector<int>& arr);
 
 // LinkedList Functions.
-void displayLL(Node * head);
+int displayLL(Node * head);
 void clearLL(Node * head);
 
 // Array Functions.
@@ -44,7 +44,8 @@ int main(void)
     Node* list = cnvtArrToLL(arr);
 
     cout << "Linked List : ";
-    displayLL(list);
+    int length = displayLL(list);
+    cout << "Length of LL : " << length << endl;
     clearLL(list);
     
     return 0;
@@ -70,18 +71,21 @@ Node* cnvtArrToLL(vector<int>& arr)
 }
 
 // Linked List Functions.
-void displayLL(Node * head) 
+int displayLL(Node * head) 
 {
+    int len = 0;
     if(head == nullptr) {
         cout << "EMPTY List!\n";
-        return;
+        return 0;
     }
     Node * ptr = head;
     while(ptr != nullptr) {
         cout << ptr->data << " -> ";
         ptr = ptr->next;
+        len++;
     }  
     cout << "|\n";
+    return len;
 }
 
 void clearLL(Node * head) 
