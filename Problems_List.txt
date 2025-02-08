@@ -1,5 +1,5 @@
 
 Problems List :-
 
-0. Intro :
-        _1 - Array -> LL Conversion & Length of List.
+0. Intro : Array -> LL Conversion & Length of List.
+1. Searching in LL.
