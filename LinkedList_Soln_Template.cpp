@@ -7,8 +7,11 @@ class Node {
         Node* next;
 
     public:
-        Node(int data = 0, Node* next = nullptr) : data(), next(next) {}
-
+        // Node(int data = 0, Node* next = nullptr) : data(data), next(next) {}
+        Node(int data = 0, Node* next = nullptr) {
+            this->data = data;
+            this->next = next;
+        }
         // Other methods as required.
 };
 
@@ -18,8 +21,17 @@ void displayLL(Node* head);
 void clearLL(Node* head);
 
 int main(void) {
+    Node* head = new Node();
+    int length = inputLL(head);
+    cout << "\nInputted " << length << " nodes!" << endl;
+    
+    cout << "LL : ";
+    displayLL(head);
+
     // Core Code for the operation.
 
+    clearLL(head);
+    cout << "\nCleared all the nodes.\n";
     return 0;
 }
 
@@ -30,21 +42,25 @@ int inputLL(Node* head)
     cout << "Enter elements of LL (-1 to stop entering..) : ";
     int ele;
     cin >> ele;
-    if(ele == -1)   return 0;
+    
+    if(ele == -1)   
+        return 0;
+
     head->data = ele;
     len++;
     
     Node* ptr = head;
 
     cin >> ele;
-    while(ele != -1) {
+    while(ele != -1) 
+    {
         Node* newNode = new Node(ele);
         ptr->next = newNode;
         ptr = newNode;
         len++;
         cin >> ele;
     }
-    cout << "Inputted " << len << " nodes!" << endl;
+    // cout << "Inputted " << len << " nodes!" << endl;
     return len;
 }
 
