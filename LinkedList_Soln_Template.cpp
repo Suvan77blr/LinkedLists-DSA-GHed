@@ -16,13 +16,13 @@ class Node {
 };
 
 // Commonly needed LL Functions.
-int inputLL(Node* head);
+int inputLL(Node** head);
 void displayLL(Node* head);
 void clearLL(Node* head);
 
 int main(void) {
     Node* head = new Node();
-    int length = inputLL(head);
+    int length = inputLL(&head);
     cout << "\nInputted " << length << " nodes!" << endl;
     
     cout << "LL : ";
@@ -36,20 +36,22 @@ int main(void) {
 }
 
 
-int inputLL(Node* head) 
+int inputLL(Node** head) 
 {
     int len = 0;
     cout << "Enter elements of LL (-1 to stop entering..) : ";
     int ele;
     cin >> ele;
     
-    if(ele == -1)   
+    if(ele == -1){
+        (*head) = nullptr;
         return 0;
+    }   
 
-    head->data = ele;
+    (*head)->data = ele;
     len++;
     
-    Node* ptr = head;
+    Node* ptr = (*head);
 
     cin >> ele;
     while(ele != -1) 
