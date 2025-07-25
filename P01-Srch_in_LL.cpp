@@ -28,12 +28,13 @@ int main(void)
     int length = inputLL(head);
     // cout << "Inputted " << length << " nodes!" << endl;
     
-    // cout << "LL : ";
-    // displayLL(head);
+    cout << "LL : ";
+    displayLL(head);
 
     int key; 
-    cout << "\nEnter key element to search : ";
+    // cout << "\nEnter key element to search : ";
     cin >> key;
+    cout << "\nKey element to search : " << key << "\n";
 
     int keyFound = searchLL(head, key);
     if(keyFound>=0){
@@ -67,23 +68,24 @@ int searchLL(Node* head, int key)
 
 int inputLL(Node* head) 
 {
-    int len = 0;
-    cout << "Enter elements of LL (-1 to stop entering..) : ";
-    int ele;
+    int n;
+    cin >> n;
+
+    int ele, len=0;
     cin >> ele;
-    if(ele == -1)   return 0;
     head->val = ele;
-    len++;
+    len++; n--;
     
     Node* ptr = head;
 
-    cin >> ele;
-    while(ele != -1) {
+    while(n > 0) {
+        cin >> ele;
         Node* newNode = new Node(ele);
         ptr->next = newNode;
         ptr = newNode;
         len++;
-        cin >> ele;
+        n--;
+        // cin >> ele;
     }
     cout << "Inputted " << len << " nodes!" << endl;
     return len;
