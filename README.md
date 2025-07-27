@@ -13,3 +13,4 @@
 * P07: [Sorting LL with 0s, 1s and 2s](./P07-Sort_0s_1s_2s_LL.cpp)
 * P08: [Removing Nth Node From End](./P08-Remove_Nth_From_End.cpp)
 * P09: [Reversing a LL](./P09-Reversing_LL.cpp)
+* P10: [Palindrome LL](./P10-Palindrome_LL.cpp)
