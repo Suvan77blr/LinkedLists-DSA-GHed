@@ -1,0 +1,120 @@
+
+// 280725.
+/*
+    P14: Deleting the middle node of the LL.
+        - Soln1: Find length & go to the [(N/2) - 1]th Node.
+        - Soln2: Tortoise & Hare => 2Pointer soln.
+*/
+
+#include <iostream>
+using namespace std;
+
+class Node {
+    public:
+    int data;
+    Node* next;
+
+    Node(int data=-1, Node* next=nullptr)
+        : data(data), next(next) { }
+};
+
+void deleteLL(Node* head);
+Node* inputLL();
+void displayLL(Node* head);
+
+// Tortoise & Hare.
+Node* deleteMidNode_Soln2(Node* head) {
+    Node *slow=head, *fast=head;
+    
+    // Making one extra hop for fast => to make slow end at node-before-mid.
+    fast = fast->next->next;
+
+    while(fast && fast->next) {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    
+    Node* midNode = slow->next;
+    slow->next = midNode->next;
+    delete midNode;
+    return head;
+}
+
+// Length-based soln.
+Node* deleteMidNode_Soln1(Node* head) {
+    int len = 0;
+    Node* ptr = head;
+
+    while(ptr) {
+        ptr = ptr->next;    
+        len++;
+    }
+    int midNodeSteps = (len/2)-1;   // => to make slow end at node-before-mid.
+    
+    ptr = head;
+    while(midNodeSteps-- && ptr) {
+        ptr = ptr->next;
+    }
+    
+    Node* midNode = ptr->next;
+    ptr->next = midNode->next;
+    delete midNode;
+    return head;
+}
+
+int main(void) {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    Node* head = inputLL();
+    cout << "Input List: ";
+    displayLL(head);
+
+    // head = deleteMidNode_Soln2(head);
+    head = deleteMidNode_Soln1(head);
+    
+    cout << "Final List: ";
+    displayLL(head);
+
+    deleteLL(head);
+    return 0;
+}
+
+void deleteLL(Node* head) {
+    if(!head) return;
+    Node* temp;
+    int count;
+    while(head) {
+        temp = head->next;
+        delete head;
+        head = temp;
+        count++;
+    } cout << "Delete " << count << " nodes.\n";
+}
+
+Node* inputLL() {
+    Node* dummy = new Node();
+    Node* ptr = dummy;
+    int ele;
+
+    while(cin >> ele) {
+        ptr->next = new Node(ele);
+        ptr = ptr->next;
+    }
+    Node* head = dummy->next;
+    delete dummy;
+    return head;
+}
+
+void displayLL(Node* head) {
+    if(!head) {
+        cout << "[ | ]\n";
+        return;
+    }
+    cout << "[ ";
+    Node* ptr = head;
+    while(ptr) {
+        cout << ptr->data << "->";
+        ptr = ptr->next;
+    } cout << "| ]\n";
+}
