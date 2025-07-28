@@ -20,3 +20,4 @@
 * P12: [Intersection Point in 'Y' LL](./P12-Intersection_Pt_of_Y_LL.cpp)
 * P13: [Middle of LL](./P13-Middle_of_LL.cpp)
 * P14: [Deleting Middle Node](./P14-Delete_Middle_Node.cpp)
+* P15: [Detecting Loop in LL](./P15-Detecting_Loop_in_LL.cpp)
